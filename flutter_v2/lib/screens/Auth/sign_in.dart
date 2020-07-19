@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_v2/screens/Services/auth.dart';
 import 'package:flutter_v2/shared/loading.dart';
 
-
-class Register extends StatefulWidget {
+class SignIn extends StatefulWidget {
 
   final Function toggleView;
-  Register({this.toggleView});
+  SignIn({this.toggleView});
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _SignInState createState() => _SignInState();
 }
 
-class _RegisterState extends State<Register> {
+class _SignInState extends State<SignIn> {
 
   final Auth _auth = Auth();
   final _formKey = GlobalKey<FormState>();
@@ -36,7 +35,7 @@ class _RegisterState extends State<Register> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent[400],
         elevation: 0.5,
-        title: Text('Register'),
+        title: Text('Sign In'),
       ),
 
       // Body of the App
@@ -72,14 +71,14 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 20.0),
               RaisedButton(
                 color: Colors.blueAccent[400],
-                child: Text('Sign Up',style: TextStyle(color: Colors.white),),
+                child: Text('Sign In',style: TextStyle(color: Colors.white),),
                 onPressed: () async{
                   if(_formKey.currentState.validate()){
                     setState(() => loading = true);
-                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                    dynamic result = await _auth.signInWithEmailAndPassword(email, password) ;
                     if(result == null){
                     setState(() {
-                      error = 'Registration Error';
+                      error = 'Sign In Error';
                       loading = false;
                     });
                     }
@@ -88,7 +87,7 @@ class _RegisterState extends State<Register> {
               ),
               RaisedButton(
                 color: Colors.teal,
-                child: Text('Sign in',style: TextStyle(color: Colors.white),),
+                child: Text('Register',style: TextStyle(color: Colors.white),),
                 onPressed: () {
                   widget.toggleView();
                 } ,

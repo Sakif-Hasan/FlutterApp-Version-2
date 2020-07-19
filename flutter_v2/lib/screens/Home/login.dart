@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v2/screens/Auth/register.dart';
+import 'package:flutter_v2/screens/Auth/sign_in.dart';
 import 'package:flutter_v2/screens/Services/auth.dart';
 
 class Login extends StatefulWidget {
@@ -16,7 +17,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     
     return Container(
-      child: Register(),
+      child: SignIn(),
     );
   }
 }
