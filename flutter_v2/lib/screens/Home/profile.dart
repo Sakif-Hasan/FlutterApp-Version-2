@@ -18,7 +18,6 @@ class _ProfileState extends State<Profile> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Profile'),
-
         actions: <Widget>[
           FlatButton.icon(
             onPressed: () async {

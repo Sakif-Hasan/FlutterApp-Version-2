@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_v2/screens/Home/emergency.dart';
+import 'package:flutter_v2/screens/Home/inbox.dart';
+import 'package:flutter_v2/screens/Home/requestForm.dart';
 import 'package:flutter_v2/screens/Home/profile.dart';
 
 class Map extends StatefulWidget {
@@ -12,12 +13,12 @@ class _MapState extends State<Map> {
 
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
 
-    Text('Index 0: Dashboard',style: optionStyle,),
-    Text('Index 1: Business',style: optionStyle,),
-    Text('Index 2: School',style: optionStyle,),
+    Text('Index 0: Map',style: optionStyle,),
+    Text('Index 1: Feed',style: optionStyle,),
+    Text('Index 2: Profile',style: optionStyle,),
 
   ];
 
@@ -26,7 +27,7 @@ class _MapState extends State<Map> {
       if(index == 0){
         Navigator.push(context, MaterialPageRoute(builder: (context) => Map()));
       }else if(index == 1){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Emergency()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Inbox()));
       }else if(index == 2){
         Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
       }
@@ -36,12 +37,15 @@ class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-
-
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RequestForm()));
+        }
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -49,8 +53,8 @@ class _MapState extends State<Map> {
             title: Text('Map'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.flag),
-            title: Text('Emergency'),
+            icon: Icon(Icons.inbox),
+            title: Text('inbox'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -58,7 +62,7 @@ class _MapState extends State<Map> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red[600],
+        selectedItemColor: Colors.blue[600],
         onTap: _onItemTapped,
       ),
     );
