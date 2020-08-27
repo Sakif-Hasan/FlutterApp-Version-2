@@ -23,8 +23,6 @@ class _InboxState extends State<Inbox> {
     super.initState();
   }
 
-  static var dataname = request.documents[i].data['authorFirstName']
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +39,8 @@ class _InboxState extends State<Inbox> {
           children: <Widget>[
             const ListTile(
               leading: Icon(Icons.flag),
-              title: Text(request.documents[i].data['authorFirstName']),
-              subtitle: Text(""),
+              title: Text(""),
+              subtitle: Text("A"),
             ),
 
             ButtonBar(
